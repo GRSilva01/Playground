@@ -21,22 +21,32 @@ j.geometry(f"{Largura}x{altura}+{x}+{y}")
 j.attributes("-alpha", 0.95)
 #--------------------------CABEÇALHO--------------------------------------
 
+contagem = str(Numero)
+Frase = tk.Label(j,
+                 text=contagem,
+                 font=("Tahoma", 18,),
+                 padx=30,
+                 anchor="c")
+Frase.pack(fill="both", expand=True)
+
 corpo_botao = tk.Frame(j
                 )
-corpo_botao.pack(expand=True)
+corpo_botao.pack(pady=355)
 
 
 botao_mais = tk.Button (corpo_botao,
                         text="+1",
                         bg="#098c00"
 )
-botao_mais.pack(expand=True)
+botao_mais.pack(side=tk.RIGHT, padx=(50, 0))
 
 
 botao_reset = tk.Button (corpo_botao,
                         text="reset",
+                        padx=50,
+                        pady=100,
                         bg="#b80000"
 )
-botao_reset.pack(expand=True)
+botao_reset.pack(side=tk.LEFT, padx=(50, 0))
 
 j.mainloop()

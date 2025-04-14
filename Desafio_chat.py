@@ -2,11 +2,16 @@ import tkinter as tk
 
 Numero = 0
 
-def acrecentar(e):
-    e.widget.config(Numero + 1)
+def acrecentar():
+    global Numero
+    Numero +=1
+    Frase.config(text=str(Numero))
 
-def reset(e):
-    e.widget.config(Numero = 0)
+def reset():
+    global Numero
+    Numero = 0
+    Frase.config(text=str(Numero))
+
 #--------------------------------------------------------------------------
 j = tk.Tk()
 j.title("Minha Janela")
@@ -21,32 +26,37 @@ j.geometry(f"{Largura}x{altura}+{x}+{y}")
 j.attributes("-alpha", 0.95)
 #--------------------------CABEÇALHO--------------------------------------
 
-contagem = str(Numero)
 Frase = tk.Label(j,
-                 text=contagem,
-                 font=("Tahoma", 18,),
+                 text=str(Numero),
+                 font=("Tahoma", 20,),
                  padx=30,
-                 anchor="c")
+                 pady=30,
+                 anchor="c",
+                 bg="#FFFFFF")
 Frase.pack(fill="both", expand=True)
 
-corpo_botao = tk.Frame(j
-                )
-corpo_botao.pack(pady=355)
+corpo_botao = tk.Frame(j, bg="#FFFFFF")
+corpo_botao.pack(pady=50)
 
 
 botao_mais = tk.Button (corpo_botao,
                         text="+1",
-                        bg="#098c00"
-)
-botao_mais.pack(side=tk.RIGHT, padx=(50, 0))
+                        font=("Tahoma", 20),
+                        bg="#098c00",
+                        fg="white",
+                        width=10,
+                        command=acrecentar)
+
+botao_mais.pack(side=tk.LEFT, padx=50)
 
 
 botao_reset = tk.Button (corpo_botao,
                         text="reset",
-                        padx=50,
-                        pady=100,
-                        bg="#b80000"
-)
-botao_reset.pack(side=tk.LEFT, padx=(50, 0))
+                        font=("Tahoma", 20),
+                        bg="#b80000",
+                        fg="white",
+                        width=10,
+                        command=reset)
+botao_reset.pack(side=tk.LEFT, padx=50,)
 
 j.mainloop()

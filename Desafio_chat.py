@@ -2,15 +2,66 @@ import tkinter as tk
 
 Numero = 0
 
+
 def acrecentar():
     global Numero
     Numero +=1
     Frase.config(text=str(Numero))
 
+def diminuir():
+    global Numero
+    if Numero > 0:
+        Numero -=1
+        Frase.config(text=str(Numero))
+    else:
+        Frase.config(text="Não é possivel diminuir!")
+
+def setar():
+    global Numero
+    try:
+        Palavra = int(receber.get())
+        if Palavra >=0:
+            Numero = Palavra
+            Frase.config(text=str(Numero))
+        else:
+            Frase.config(text="Valor negativo não permitidor!")
+    except ValueError:
+        Frase.config(text="Digite um número válido!")
+
 def reset():
     global Numero
     Numero = 0
     Frase.config(text=str(Numero))
+
+def upgrade_10():
+    global Numero
+    Numero +=1
+    Frase.config(text=str(Numero))
+    j.after(1, upgrade_10)
+
+def upgrade_100():
+    global Numero
+    Numero +=10
+    Frase.config(text=str(Numero))
+    j.after(1, upgrade_100)
+
+def b_upgrade_10():
+    global Numero
+    if Numero >= 10:
+        Numero -=10
+        upgrade_10()
+        Frase.config(text=str(Numero))
+    else:
+        Frase.config(text="Valor insuficiente!")
+
+def b_upgrade_100():
+    global Numero
+    if Numero >= 100:
+        Numero -=100
+        upgrade_100()
+        Frase.config(text=str(Numero))
+    else:
+        Frase.config(text="Valor insuficiente!")
 
 #--------------------------------------------------------------------------
 j = tk.Tk()
@@ -49,6 +100,16 @@ botao_mais = tk.Button (corpo_botao,
 
 botao_mais.pack(side=tk.LEFT, padx=50)
 
+botao_menos = tk.Button (corpo_botao,
+                        text="-1",
+                        font=("Tahoma", 20),
+                        bg="#3967db",
+                        fg="white",
+                        width=10,
+                        command=diminuir)
+
+botao_menos.pack(side=tk.LEFT, padx=50)
+
 
 botao_reset = tk.Button (corpo_botao,
                         text="reset",
@@ -58,5 +119,35 @@ botao_reset = tk.Button (corpo_botao,
                         width=10,
                         command=reset)
 botao_reset.pack(side=tk.LEFT, padx=50,)
+
+botao_setar = tk.Button (corpo_botao,
+                       text="set",
+                       font=("Tahoma", 20),
+                       bg="#F01F01",
+                       fg="white",
+                       width=10,
+                       command=setar)
+botao_setar.pack(side=tk.LEFT, padx=50)
+
+botao_upgrade = tk.Button (corpo_botao,
+                       text="up +10",
+                       font=("Tahoma", 20),
+                       bg="#F01F01",
+                       fg="white",
+                       width=10,
+                       command=b_upgrade_10)
+botao_upgrade.pack(side=tk.LEFT, padx=50)
+
+botao_upgrade_100 = tk.Button (corpo_botao,
+                       text="up +100",
+                       font=("Tahoma", 20),
+                       bg="#F01F01",
+                       fg="white",
+                       width=10,
+                       command=b_upgrade_100)
+botao_upgrade_100.pack(side=tk.LEFT, padx=50)
+
+receber = tk.Entry(j)
+receber.pack(pady=10)
 
 j.mainloop()

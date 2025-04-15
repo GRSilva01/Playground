@@ -2,7 +2,7 @@ import tkinter as tk
 
 Numero = 0
 
-
+#----------------------------------------------------------------------------
 def acrecentar():
     global Numero
     Numero +=1
@@ -62,6 +62,9 @@ def b_upgrade_100():
         Frase.config(text=str(Numero))
     else:
         Frase.config(text="Valor insuficiente!")
+#-----------------------funções---------------------------------------------
+
+#Codigo cria uma janela com um "mini jogo" clicker, fiz como um desafio do ChatGPT para aprender mais sobre Tkinter
 
 #--------------------------------------------------------------------------
 j = tk.Tk()
@@ -98,7 +101,7 @@ botao_mais = tk.Button (corpo_botao,
                         width=10,
                         command=acrecentar)
 
-botao_mais.pack(side=tk.LEFT, padx=50)
+botao_mais.pack(side=tk.LEFT, padx=10)
 
 botao_menos = tk.Button (corpo_botao,
                         text="-1",
@@ -108,7 +111,7 @@ botao_menos = tk.Button (corpo_botao,
                         width=10,
                         command=diminuir)
 
-botao_menos.pack(side=tk.LEFT, padx=50)
+botao_menos.pack(side=tk.LEFT, padx=10)
 
 
 botao_reset = tk.Button (corpo_botao,
@@ -118,7 +121,7 @@ botao_reset = tk.Button (corpo_botao,
                         fg="white",
                         width=10,
                         command=reset)
-botao_reset.pack(side=tk.LEFT, padx=50,)
+botao_reset.pack(side=tk.LEFT, padx=10)
 
 botao_setar = tk.Button (corpo_botao,
                        text="set",
@@ -127,7 +130,7 @@ botao_setar = tk.Button (corpo_botao,
                        fg="white",
                        width=10,
                        command=setar)
-botao_setar.pack(side=tk.LEFT, padx=50)
+botao_setar.pack(side=tk.LEFT, padx=10)
 
 botao_upgrade = tk.Button (corpo_botao,
                        text="up +10",
@@ -136,7 +139,7 @@ botao_upgrade = tk.Button (corpo_botao,
                        fg="white",
                        width=10,
                        command=b_upgrade_10)
-botao_upgrade.pack(side=tk.LEFT, padx=50)
+botao_upgrade.pack(side=tk.LEFT, padx=10)
 
 botao_upgrade_100 = tk.Button (corpo_botao,
                        text="up +100",
@@ -145,7 +148,7 @@ botao_upgrade_100 = tk.Button (corpo_botao,
                        fg="white",
                        width=10,
                        command=b_upgrade_100)
-botao_upgrade_100.pack(side=tk.LEFT, padx=50)
+botao_upgrade_100.pack(side=tk.LEFT, padx=10)
 
 receber = tk.Entry(j)
 receber.pack(pady=10)
